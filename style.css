@@ -1,0 +1,174 @@
+/* Aplica un cálculo de tamaño uniforme a todos los elementos. */
+* {
+  box-sizing: border-box; /* Incluye el borde y el relleno en el tamaño total. */
+}
+
+/* Define el aspecto general de la página. */
+body {
+  margin: 0; /* Elimina el margen que trae el navegador. */
+  font-family: Arial, sans-serif; /* Usa una letra clara y común. */
+  color: #303936; /* Define el color principal del texto. */
+  background: #edf1ee; /* Coloca un fondo gris verdoso claro. */
+}
+
+/* Centra el panel en la pantalla. */
+.contenedor {
+  min-height: 100vh; /* Ocupa toda la altura de la ventana. */
+  display: flex; /* Activa la distribución flexible. */
+  justify-content: center; /* Centra el panel horizontalmente. */
+  align-items: center; /* Centra el panel verticalmente. */
+  padding: 20px; /* Deja espacio en los bordes de la pantalla. */
+}
+
+/* Diseña la caja principal. */
+.panel {
+  width: 100%; /* Permite que se adapte al espacio disponible. */
+  max-width: 470px; /* Evita que el panel sea demasiado ancho. */
+  padding: 34px; /* Deja espacio interior. */
+  background: #ffffff; /* Usa un fondo blanco. */
+  border: 1px solid #d9e1dc; /* Dibuja un borde fino. */
+  border-radius: 10px; /* Redondea las esquinas. */
+}
+
+/* Estilo del texto pequeño superior. */
+.etiqueta {
+  margin: 0 0 9px; /* Separa la etiqueta del título. */
+  text-align: center; /* Centra el texto. */
+  color: #64806f; /* Usa un verde apagado. */
+  font-size: 11px; /* Reduce el tamaño de la letra. */
+  font-weight: bold; /* Resalta la etiqueta. */
+  letter-spacing: 1.4px; /* Separa un poco las letras. */
+}
+
+/* Estilo del título principal. */
+h1 {
+  margin: 0; /* Quita el margen predeterminado. */
+  text-align: center; /* Centra el título. */
+  font-size: 27px; /* Define el tamaño del título. */
+}
+
+/* Estilo de la descripción. */
+.descripcion {
+  margin: 10px 0 30px; /* Separa la descripción de los elementos cercanos. */
+  text-align: center; /* Centra el texto. */
+  color: #68736d; /* Usa un tono gris suave. */
+  font-size: 14px; /* Define un tamaño cómodo. */
+  line-height: 1.5; /* Mejora la lectura. */
+}
+
+/* Agrupa el nombre del campo y el desplegable. */
+.grupo-desplegable {
+  position: relative; /* Permite ubicar la lista debajo del botón. */
+}
+
+/* Estilo del nombre del campo. */
+.grupo-desplegable label {
+  display: block; /* Hace que el nombre ocupe su propia línea. */
+  margin-bottom: 9px; /* Separa el nombre del botón. */
+  font-size: 14px; /* Define el tamaño del texto. */
+  font-weight: bold; /* Resalta el nombre del campo. */
+}
+
+/* Contenedor que mantiene juntos el botón y la lista. */
+.desplegable {
+  position: relative; /* Sirve de referencia para la lista desplegable. */
+}
+
+/* Estilo del botón que abre y cierra la lista. */
+.boton-desplegable {
+  width: 100%; /* Ocupa todo el ancho disponible. */
+  display: flex; /* Coloca el texto y la flecha en una fila. */
+  justify-content: space-between; /* Deja la flecha al extremo derecho. */
+  align-items: center; /* Centra los elementos verticalmente. */
+  padding: 14px 15px; /* Da espacio al contenido del botón. */
+  border: 1px solid #aebdb3; /* Dibuja el borde del botón. */
+  border-radius: 6px; /* Redondea las esquinas. */
+  background: #ffffff; /* Mantiene el fondo blanco. */
+  color: #45534a; /* Define el color del texto. */
+  font-size: 14px; /* Ajusta el tamaño de la letra. */
+  text-align: left; /* Alinea el texto a la izquierda. */
+  cursor: pointer; /* Indica que el botón se puede pulsar. */
+}
+
+/* Cambia el borde cuando el menú está abierto. */
+.boton-desplegable.abierto {
+  border-color: #64806f; /* Resalta el botón activo. */
+}
+
+/* Da estilo a la flecha del desplegable. */
+.flecha {
+  font-size: 20px; /* Hace la flecha un poco más grande. */
+  transition: transform 0.2s; /* Suaviza su movimiento. */
+}
+
+/* Gira la flecha cuando se abre la lista. */
+.boton-desplegable.abierto .flecha {
+  transform: rotate(180deg); /* Cambia la dirección de la flecha. */
+}
+
+/* Diseña la lista de opciones. */
+.opciones {
+  position: absolute; /* Coloca la lista sobre el flujo normal de la página. */
+  z-index: 2; /* Hace que aparezca encima de otros elementos. */
+  top: calc(100% + 6px); /* Sitúa la lista debajo del botón. */
+  left: 0; /* Alinea la lista con el borde izquierdo. */
+  width: 100%; /* Da a la lista el mismo ancho del botón. */
+  margin: 0; /* Elimina el margen predeterminado de la lista. */
+  padding: 6px; /* Deja espacio alrededor de las opciones. */
+  list-style: none; /* Quita los puntos de la lista. */
+  border: 1px solid #d9e1dc; /* Dibuja un borde alrededor de la lista. */
+  border-radius: 7px; /* Redondea sus esquinas. */
+  background: #ffffff; /* Usa fondo blanco. */
+  box-shadow: 0 8px 18px rgba(30, 50, 38, 0.10); /* Agrega una sombra suave. */
+}
+
+/* Estilo de cada opción de la lista. */
+.opcion {
+  width: 100%; /* Ocupa todo el ancho de la lista. */
+  padding: 11px 10px; /* Deja espacio para pulsar cómodamente. */
+  border: 0; /* Quita el borde predeterminado. */
+  border-radius: 5px; /* Redondea las esquinas. */
+  background: transparent; /* Mantiene el fondo transparente. */
+  color: #303936; /* Define el color del texto. */
+  font-size: 14px; /* Mantiene una letra legible. */
+  text-align: left; /* Alinea el texto a la izquierda. */
+  cursor: pointer; /* Indica que cada opción se puede seleccionar. */
+}
+
+/* Resalta una opción cuando el cursor pasa por encima. */
+.opcion:hover {
+  background: #edf3ef; /* Coloca un fondo verde muy claro. */
+}
+
+/* Resalta la opción que ya fue seleccionada. */
+.opcion.seleccionada {
+  background: #e3ece6; /* Mantiene un fondo distinto para la elegida. */
+  color: #405d4a; /* Cambia el color del texto. */
+  font-weight: bold; /* Hace más visible la selección. */
+}
+
+/* Estilo del mensaje que aparece debajo del menú. */
+.mensaje {
+  min-height: 18px; /* Reserva espacio para que el panel no salte. */
+  margin: 18px 0 0; /* Separa el mensaje del desplegable. */
+  color: #718078; /* Usa un color discreto. */
+  font-size: 12px; /* Mantiene el mensaje pequeño. */
+  text-align: center; /* Centra el texto. */
+}
+
+/* Muestra un contorno visible al usar el teclado. */
+button:focus-visible {
+  outline: 2px solid #303936; /* Dibuja el contorno de enfoque. */
+  outline-offset: 3px; /* Separa el contorno del botón. */
+}
+
+/* Ajusta el panel en pantallas pequeñas. */
+@media (max-width: 480px) {
+  .panel {
+    padding: 25px 20px; /* Reduce el espacio interior. */
+  }
+
+  h1 {
+    font-size: 24px; /* Reduce el tamaño del título. */
+  }
+}
