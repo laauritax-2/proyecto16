@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!-- Permite usar tildes y caracteres especiales -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Adapta la página a celulares -->
+    <meta name="description" content="Ejemplo de un menú desplegable personalizado."> <!-- Describe el contenido -->
+    <title>Desplegable personalizado</title> <!-- Título de la pestaña -->
+
+    <link rel="stylesheet" href="css/estilos.css"> <!-- Conecta el archivo CSS -->
+    <script src="script.js" defer></script> <!-- Conecta el JavaScript cuando el HTML ya está leído -->
+</head>
+<body>
+    <!-- Contenedor principal de la página -->
+    <main class="contenedor">
+        <header class="encabezado">
+            <p class="etiqueta"></p>
+            <h1>Desplegable personalizado</h1>
+            <p>Selecciona una opción de la lista.</p>
+        </header>
+
+        <!-- Grupo que contiene el título y el menú desplegable -->
+        <section class="grupo-desplegable">
+            <label id="etiqueta-menu" class="titulo-menu">Selecciona un elemento</label>
+
+            <!-- Este botón abre y cierra la lista de opciones -->
+            <div class="desplegable">
+                <button
+                    type="button"
+                    id="boton-desplegable"
+                    class="boton-desplegable"
+                    aria-labelledby="etiqueta-menu valor-seleccionado"
+                    aria-haspopup="listbox"
+                    aria-expanded="false">
+
+                    <!-- Aquí se muestra el texto inicial o la opción elegida -->
+                    <span id="valor-seleccionado">Select an Item</span>
+
+                    <!-- Flecha que cambia de dirección cuando el menú se abre -->
+                    <span id="flecha" class="flecha" aria-hidden="true">⌄</span>
+                </button>
+
+                <!-- Lista de opciones, oculta hasta que se abre el menú -->
+                <ul id="lista-opciones" class="lista-opciones" role="listbox" aria-labelledby="etiqueta-menu" hidden>
+                    <li role="option" tabindex="-1" data-value="First Item" aria-selected="false">First Item</li>
+                    <li role="option" tabindex="-1" data-value="Second Item" aria-selected="false">Second Item</li>
+                    <li role="option" tabindex="-1" data-value="Third Item" aria-selected="false">Third Item</li>
+                    <li role="option" tabindex="-1" data-value="Fourth Item" aria-selected="false">Fourth Item</li>
+                    <li role="option" tabindex="-1" data-value="Fifth Item" aria-selected="false">Fifth Item</li>
+                </ul>
+            </div>
+
+            <!-- Mensaje que informa qué opción fue seleccionada -->
+            <p id="mensaje" class="mensaje" aria-live="polite">Todavía no has seleccionado una opción.</p>
+        </section>
+    </main>
+</body>
+</html>

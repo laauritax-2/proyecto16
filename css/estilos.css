@@ -1,0 +1,171 @@
+/* Hace que el padding y el borde formen parte del tamaño de los elementos */
+* {
+    box-sizing: border-box;
+}
+
+/* Estilos generales de la página */
+body {
+    margin: 0; /* Elimina el margen predeterminado */
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    font-family: Arial, sans-serif; /* Usa una fuente sencilla */
+    color: #30343b; /* Define el color principal del texto */
+    background: #f4f5f7; /* Coloca un fondo gris claro */
+}
+
+/* Centra el contenido principal */
+.contenedor {
+    width: min(90%, 620px); /* Limita el ancho y permite adaptarse */
+    margin: 0 auto; /* Centra horizontalmente */
+    padding: 70px 0; /* Agrega espacio arriba y abajo */
+}
+
+/* Presentación del título */
+.encabezado {
+    margin-bottom: 45px; /* Separa el encabezado del menú */
+    text-align: center; /* Centra el texto */
+}
+
+.etiqueta {
+    color: #6474a8; /* Da color al texto pequeño */
+    font-size: 12px; /* Reduce su tamaño */
+    font-weight: bold; /* Resalta el texto */
+    letter-spacing: 2px; /* Separa las letras */
+}
+
+h1 {
+    margin: 12px 0; /* Controla el espacio del título */
+    font-size: 30px; /* Define el tamaño del título */
+}
+
+.encabezado p:last-child {
+    color: #707782; /* Usa un color secundario */
+    line-height: 1.5; /* Mejora la lectura */
+}
+
+/* Contenedor del menú desplegable */
+.grupo-desplegable {
+    width: 100%; /* Ocupa el ancho disponible */
+    max-width: 420px; /* Evita que sea demasiado ancho */
+    margin: 0 auto; /* Centra el menú */
+}
+
+.titulo-menu {
+    display: block; /* Coloca la etiqueta en su propia línea */
+    margin-bottom: 10px; /* Separa la etiqueta del botón */
+    font-size: 14px; /* Tamaño del texto */
+    font-weight: bold; /* Resalta la etiqueta */
+}
+
+/* Sirve como referencia para ubicar la lista debajo del botón */
+.desplegable {
+    position: relative; /* Permite posicionar la lista respecto a este bloque */
+    width: 100%; /* Ocupa todo el ancho */
+}
+
+/* Botón que abre y cierra el menú */
+.boton-desplegable {
+    display: flex; /* Coloca el texto y la flecha en una fila */
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-content: space-between; /* Separa el texto de la flecha */
+    width: 100%; /* Ocupa todo el ancho */
+    min-height: 52px; /* Define la altura del botón */
+    padding: 0 16px; /* Agrega espacio interior */
+    border: 1px solid #555b64; /* Dibuja un borde */
+    border-radius: 10px; /* Redondea las esquinas */
+    background: #ffffff; /* Fondo blanco */
+    color: #30343b; /* Color del texto */
+    font-size: 16px; /* Tamaño del texto */
+    text-align: left; /* Alinea el texto a la izquierda */
+    cursor: pointer; /* Muestra que se puede pulsar */
+}
+
+.boton-desplegable:hover {
+    border-color: #6474a8; /* Cambia el borde al pasar el cursor */
+}
+
+.boton-desplegable:focus-visible {
+    outline: 3px solid #aab5df; /* Resalta el botón al usar el teclado */
+    outline-offset: 3px; /* Separa el contorno del botón */
+}
+
+.flecha {
+    margin-left: 12px; /* Separa la flecha del texto */
+    font-size: 20px; /* Aumenta el tamaño de la flecha */
+}
+
+/* Lista que aparece al abrir el desplegable */
+.lista-opciones {
+    position: absolute; /* Coloca la lista sobre el contenido siguiente */
+    z-index: 5; /* Mantiene la lista por encima de otros elementos */
+    top: calc(100% + 6px); /* La ubica debajo del botón */
+    left: 0; /* Alinea la lista con el borde izquierdo */
+    width: 100%; /* Igual ancho que el botón */
+    margin: 0; /* Quita el margen de la lista */
+    padding: 0; /* Quita el espacio interior */
+    overflow: hidden; /* Respeta las esquinas redondeadas */
+    border: 1px solid #b9bdc5; /* Dibuja el borde de la lista */
+    border-radius: 12px; /* Redondea las esquinas */
+    background: #ffffff; /* Fondo blanco */
+    list-style: none; /* Quita las viñetas */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.09); /* Agrega una sombra suave */
+}
+
+/* Cada opción de la lista */
+.lista-opciones li {
+    position: relative; /* Permite ubicar la marca de selección */
+    min-height: 49px; /* Mantiene una altura cómoda */
+    padding: 15px 42px 15px 16px; /* Deja espacio para el texto y la marca */
+    border-bottom: 1px solid #d7d9de; /* Separa las opciones */
+    font-size: 15px; /* Tamaño del texto */
+    cursor: pointer; /* Indica que se puede seleccionar */
+}
+
+.lista-opciones li:last-child {
+    border-bottom: none; /* Quita la línea de la última opción */
+}
+
+.lista-opciones li:hover,
+.lista-opciones li:focus {
+    outline: none; /* Evita el contorno predeterminado */
+    background: #f0f2f8; /* Resalta la opción enfocada o señalada */
+}
+
+/* Estilo de la opción que el usuario ya seleccionó */
+.lista-opciones li.seleccionada {
+    background: #f0f2f8; /* Mantiene resaltada la opción elegida */
+    font-weight: bold; /* Destaca el texto seleccionado */
+}
+
+.lista-opciones li.seleccionada::after {
+    content: "✓"; /* Dibuja una marca de verificación */
+    position: absolute; /* Permite ubicarla a la derecha */
+    top: 50%; /* La coloca a mitad de la opción */
+    right: 15px; /* La separa del borde derecho */
+    transform: translateY(-50%); /* Centra la marca verticalmente */
+    color: #30343b; /* Define el color de la marca */
+    font-size: 18px; /* Define el tamaño de la marca */
+    font-weight: bold; /* Hace más visible la marca */
+}
+
+/* Mensaje que aparece después de elegir una opción */
+.mensaje {
+    min-height: 20px; /* Reserva espacio para evitar saltos */
+    margin-top: 16px; /* Separa el mensaje del menú */
+    color: #707782; /* Usa un color secundario */
+    font-size: 13px; /* Tamaño pequeño */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 520px) {
+    .contenedor {
+        padding: 45px 0; /* Reduce el espacio exterior */
+    }
+
+    h1 {
+        font-size: 25px; /* Reduce el tamaño del título */
+    }
+
+    .boton-desplegable {
+        min-height: 49px; /* Ajusta la altura del botón */
+    }
+}
